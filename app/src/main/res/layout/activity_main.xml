@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                tools:context=".MainActivity">
+
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="C++ quadratic eqautinos solver"/>
+
+    <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_below="@+id/title"
+            android:gravity="center"
+            android:text="2, 3, 3 to test exception"/>
+
+    <TextView
+            android:id="@+id/aLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subtitle"
+            android:layout_marginTop="16dp"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:textSize="28sp"
+            android:layout_marginRight="16dp"
+            android:text="A:"/>
+
+    <EditText
+            android:id="@+id/aValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="32dp"
+            android:inputType="numberDecimal"
+            android:text="2"
+            android:layout_alignTop="@+id/aLabel"
+            android:layout_alignBottom="@+id/aLabel"
+            android:layout_toRightOf="@+id/aLabel"/>
+
+    <TextView
+            android:id="@+id/bLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aLabel"
+            android:layout_alignParentLeft="true"
+            android:textSize="28sp"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:text="B:"/>
+
+    <EditText
+            android:id="@+id/bValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:minWidth="32dp"
+            android:text="6"
+            android:layout_alignTop="@+id/bLabel"
+            android:layout_alignBottom="@+id/bLabel"
+            android:layout_toRightOf="@+id/bLabel"/>
+
+    <TextView
+            android:id="@+id/cLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bLabel"
+            android:layout_alignParentLeft="true"
+            android:textSize="28sp"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:text="C:"/>
+
+    <EditText
+            android:id="@+id/cValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="32dp"
+            android:text="4"
+            android:inputType="numberDecimal"
+            android:layout_alignTop="@+id/cLabel"
+            android:layout_alignBottom="@+id/cLabel"
+            android:layout_toRightOf="@+id/cLabel"/>
+
+    <TextView
+            android:id="@+id/resultLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/cValue"
+            android:gravity="center"
+            android:text="Results will be there!"/>
+
+    <Button
+            android:id="@+id/actionBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resultLabel"
+            android:layout_marginTop="16dp"
+            android:text="Solve me in C++!"/>
+
+</RelativeLayout>
