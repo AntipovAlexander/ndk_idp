@@ -58,7 +58,13 @@ class CaptchaActivity : AppCompatActivity() {
         if (progress.isVisible) progress.isVisible = false
     }
 
+    override fun onDestroy() {
+        compositeDisposable.dispose()
+        super.onDestroy()
+    }
+
     private external fun makeCaptcha(addBorder: Boolean, path: String): Boolean
 
     private fun Disposable.addToDisposables() = compositeDisposable.add(this)
+
 }
