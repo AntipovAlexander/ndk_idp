@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -8,6 +8,8 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refresh"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/checkerContailner"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <ImageView
@@ -20,6 +22,39 @@
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_above="@+id/checkerContailner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="200dp"/>
 
-</FrameLayout>
+    <LinearLayout
+            android:id="@+id/checkerContailner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="16dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Prove that you aren't robot. What are you seeing in the picture at the moment?"/>
+
+        <EditText
+                android:id="@+id/yourAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:hint="Your answer is ..."
+                android:layout_marginTop="8dp"/>
+
+        <Button
+                android:id="@+id/buttonProve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="I'm not a robot!"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

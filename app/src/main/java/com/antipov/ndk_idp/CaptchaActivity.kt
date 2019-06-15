@@ -2,6 +2,7 @@ package com.antipov.ndk_idp
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,10 +12,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_captcha.*
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.toast
 import java.io.File
 
 class CaptchaActivity : AppCompatActivity() {
+
+    private var captchaString = ""
 
     companion object {
         private const val FILENAME = "captcha.bmp"
@@ -29,8 +33,25 @@ class CaptchaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_captcha)
-        refresh.setOnRefreshListener { generateCaptcha() }
+        initListeners()
         generateCaptcha()
+    }
+
+    private fun initListeners() {
+        buttonProve.setOnClickListener { checkCaptcha() }
+        refresh.setOnRefreshListener { generateCaptcha() }
+    }
+
+    private fun checkCaptcha() {
+        if (yourAnswer.text.toString() == captchaString) {
+            toast("Congrats! You are not robot").apply {
+                view.backgroundColor = Color.GREEN
+            }
+        } else {
+            toast("YOU ARE ROBOT").apply {
+                view.backgroundColor = Color.RED
+            }
+        }
     }
 
     private fun generateCaptcha() {
@@ -38,9 +59,9 @@ class CaptchaActivity : AppCompatActivity() {
             // create a file
             val file = File(filesDir, FILENAME)
             // call native function
-            makeCaptcha(true, file.absolutePath)
+            val str = makeCaptcha(true, file.absolutePath)
             // decoding generated bitmap with captcha
-            BitmapFactory.decodeFile(file.absolutePath)
+            str to BitmapFactory.decodeFile(file.absolutePath)
         }
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
@@ -52,10 +73,12 @@ class CaptchaActivity : AppCompatActivity() {
         toast(throwable.toString())
     }
 
-    private fun onCaptchaGenerated(bmp: Bitmap) {
+    private fun onCaptchaGenerated(result: Pair<String, Bitmap>) {
+        val (answer, bmp) = result
         captcha.setImageBitmap(bmp)
         refresh.isRefreshing = false
         if (progress.isVisible) progress.isVisible = false
+        captchaString = answer
     }
 
     override fun onDestroy() {
@@ -63,7 +86,7 @@ class CaptchaActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private external fun makeCaptcha(addBorder: Boolean, path: String): Boolean
+    private external fun makeCaptcha(addBorder: Boolean, path: String): String
 
     private fun Disposable.addToDisposables() = compositeDisposable.add(this)
 

@@ -17,7 +17,7 @@ using namespace cimg_library;
 #define cimg_debug 1
 #endif
 
-extern "C" JNIEXPORT jboolean JNICALL
+extern "C" JNIEXPORT jstring JNICALL
 Java_com_antipov_ndk_1idp_CaptchaActivity_makeCaptcha(
         JNIEnv *env,
         jobject /* this */,
@@ -118,5 +118,5 @@ Java_com_antipov_ndk_1idp_CaptchaActivity_makeCaptcha(
     captcha.save(file_result_path);
     ~captcha;
     env->ReleaseStringUTFChars(pathResult, file_result_path);
-    return JNI_TRUE;
+    return env->NewStringUTF(captcha_text);
 }
