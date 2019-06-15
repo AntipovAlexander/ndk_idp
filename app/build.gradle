@@ -5,6 +5,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    lintOptions {
+        abortOnError false
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.antipov.ndk_idp"
