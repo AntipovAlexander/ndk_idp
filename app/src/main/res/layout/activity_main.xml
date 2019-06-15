@@ -105,7 +105,7 @@
             android:layout_marginTop="16dp"
             android:layout_below="@+id/cValue"
             android:gravity="center"
-            android:text="Results will be there!"/>
+            android:text="Results will be here!"/>
 
     <Button
             android:id="@+id/actionBtn"
@@ -114,5 +114,23 @@
             android:layout_below="@+id/resultLabel"
             android:layout_marginTop="16dp"
             android:text="Solve me in C++!"/>
+
+    <TextView
+            android:id="@+id/orLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_below="@+id/actionBtn"
+            android:gravity="center"
+            android:text="or"/>
+
+    <Button
+            android:id="@+id/openCaptcha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orLabel"
+            android:text="Make captcha"/>
 
 </RelativeLayout>
