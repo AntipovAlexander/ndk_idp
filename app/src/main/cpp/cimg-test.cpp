@@ -18,7 +18,7 @@ using namespace cimg_library;
 #endif
 
 extern "C" JNIEXPORT jboolean JNICALL
-Java_com_antipov_ndk_1idp_MainActivity_makeCaptcha(
+Java_com_antipov_ndk_1idp_CaptchaActivity_makeCaptcha(
         JNIEnv *env,
         jobject /* this */,
         jboolean add_border,
@@ -115,7 +115,7 @@ Java_com_antipov_ndk_1idp_MainActivity_makeCaptcha(
         captcha.draw_rectangle(0,0,captcha.width() - 1,captcha.height() - 1,
                                CImg<unsigned char>::vector(255,255,255).data(),1.0f,~0U);
     captcha = (+captcha).fill(255) - captcha;
-    captcha.save(file_result_path, 100);
+    captcha.save(file_result_path);
     ~captcha;
     env->ReleaseStringUTFChars(pathResult, file_result_path);
     return JNI_TRUE;
