@@ -46,11 +46,11 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 # Specifies a path to native header files.
-include_directories(includes/)
+target_include_directories(cimg-test PUBLIC includes/ includes/)
 
-# target_link_libraries( # Specifies the target library.
-#                       native-lib
-#
+target_link_libraries( # Specifies the target library.
+                       quadratic-equation
+
                        # Links the target library to the log library
                        # included in the NDK.
-#                       ${log-lib} )
+                       ${log-lib} )
